@@ -1,0 +1,89 @@
+<!-- Saurav Shah
+CSE 160 Computer Graphics
+Assignment 2: Blocky 3D Animal (Medium) 
+
+Due: 04/27/2026 -->
+
+<!-- Index.html -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blocky Goat</title>
+  </head>
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+    <br>
+
+    <!-- Animation controls -->
+    <input type="button" value="Animation ON" onclick="g_animation=true;">
+    <input type="button" value="Animation OFF" onclick="g_animation=false;">
+    <input type="button" value="Poke (or Shift+Click)" onclick="startPoke();">
+    <br>
+
+    <!-- Global rotation -->
+    <label>Camera X:</label>
+    <input type="range" id="angleSliderX" min="-180" max="180" value="0" oninput="g_globalAngleX=this.value; renderScene();">
+    <label>Camera Y:</label>
+    <input type="range" id="angleSliderY" min="-180" max="180" value="0" oninput="g_globalAngleY=this.value; renderScene();">
+    <br>
+
+    <!-- Head and tail -->
+    <label>Head:</label>
+    <input type="range" id="headSlider" min="-30" max="30" value="0" oninput="g_headAngle=this.value; renderScene();">
+    <label>Tail:</label>
+    <input type="range" id="tailSlider" min="-45" max="45" value="0" oninput="g_tailAngle=this.value; renderScene();">
+    <br>
+
+    <!-- Front Left leg (3 levels) -->
+    <label>FL Upper:</label>
+    <input type="range" id="flUpperSlider" min="-45" max="45" value="0" oninput="g_flUpperAngle=this.value; renderScene();">
+    <label>FL Lower:</label>
+    <input type="range" id="flLowerSlider" min="-45" max="45" value="0" oninput="g_flLowerAngle=this.value; renderScene();">
+    <label>FL Hoof:</label>
+    <input type="range" id="flHoofSlider" min="-30" max="30" value="0" oninput="g_flHoofAngle=this.value; renderScene();">
+    <br>
+
+    <!-- Front Right leg -->
+    <label>FR Upper:</label>
+    <input type="range" id="frUpperSlider" min="-45" max="45" value="0" oninput="g_frUpperAngle=this.value; renderScene();">
+    <label>FR Lower:</label>
+    <input type="range" id="frLowerSlider" min="-45" max="45" value="0" oninput="g_frLowerAngle=this.value; renderScene();">
+    <label>FR Hoof:</label>
+    <input type="range" id="frHoofSlider" min="-30" max="30" value="0" oninput="g_frHoofAngle=this.value; renderScene();">
+    <br>
+
+    <!-- Back Left leg -->
+    <label>BL Upper:</label>
+    <input type="range" id="blUpperSlider" min="-45" max="45" value="0" oninput="g_blUpperAngle=this.value; renderScene();">
+    <label>BL Lower:</label>
+    <input type="range" id="blLowerSlider" min="-45" max="45" value="0" oninput="g_blLowerAngle=this.value; renderScene();">
+    <label>BL Hoof:</label>
+    <input type="range" id="blHoofSlider" min="-30" max="30" value="0" oninput="g_blHoofAngle=this.value; renderScene();">
+    <br>
+
+    <!-- Back Right leg -->
+    <label>BR Upper:</label>
+    <input type="range" id="brUpperSlider" min="-45" max="45" value="0" oninput="g_brUpperAngle=this.value; renderScene();">
+    <label>BR Lower:</label>
+    <input type="range" id="brLowerSlider" min="-45" max="45" value="0" oninput="g_brLowerAngle=this.value; renderScene();">
+    <label>BR Hoof:</label>
+    <input type="range" id="brHoofSlider" min="-30" max="30" value="0" oninput="g_brHoofAngle=this.value; renderScene();">
+    <br>
+
+    <p id="perf"></p>
+    <p><b>Blocky Goat:</b> Mouse drag to rotate. Shift+click for poke animation (goat jumps and shakes). All joints have slider control. Cone horns are a non-cube primitive. Animation ON/OFF toggles walking.</p>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/cuon-matrix-cse160.js"></script>
+    <script src="Cone.js"></script>
+    <script src="Cube.js"></script>
+    <script src="BlockyAnimal.js"></script>
+  </body>
+</html>
